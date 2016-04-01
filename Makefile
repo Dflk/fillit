@@ -6,17 +6,18 @@
 #    By: rbaran <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/17 18:36:39 by rbaran            #+#    #+#              #
-#    Updated: 2016/02/26 18:52:21 by rbaran           ###   ########.fr        #
+#    Updated: 2016/04/01 12:54:08 by rbaran           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc
 LIB = libft.a
-LIBDIR = ./lib/
+LIBDIR = ./libft/
 FLAGS = -Wall -Werror -Wextra
 LFLAGS = -I./inc/
-LDFLAGS = -L./lib/ -lft
+LLIBFLAGS = -I./libft/includes/
+LDFLAGS = -L./libft/ -lft
 SRCS = ./srcs/ft_error.c ./srcs/ft_open.c ./srcs/ft_print.c ./srcs/ft_read.c \
 	./srcs/ft_tetri.c ./srcs/main.c ./srcs/ft_map.c ./srcs/ft_bits.c \
 	./srcs/ft_math.c
@@ -25,7 +26,7 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(LIB):
-	@make -C lib/
+	@make -C libft/
 	@printf 'Lib compilation: DONE\n'
 
 $(NAME): $(LIB) $(OBJ)
@@ -33,15 +34,16 @@ $(NAME): $(LIB) $(OBJ)
 	@printf 'Fillit compilation: DONE\n'
 
 %.o: %.c
-	@$(CC) $(FLAGS) -o $@ -c $< $(LFLAGS)
+	@$(CC) $(FLAGS) -o $@ -c $< $(LFLAGS) $(LLIBFLAGS)
+
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@make -C lib/ clean
+	@make -C $(LIBDIR) clean
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f $(LIBDIR)$(LIB)
+	@make -C $(LIBDIR) fclean
 
 re: fclean all
 

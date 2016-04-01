@@ -6,7 +6,7 @@
 /*   By: rbaran <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 15:45:39 by rbaran            #+#    #+#             */
-/*   Updated: 2016/02/26 18:30:48 by rbaran           ###   ########.fr       */
+/*   Updated: 2016/04/01 12:54:33 by rbaran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-# include "../lib/libft.h"
+# include <libft.h>
 # define BUF_SIZE 26*21
 # define USAGE 1
 # define UP 1
